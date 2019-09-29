@@ -1,26 +1,27 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
+// https://github.com/microsoft/vscode-dev-containers/tree/master/containers/azure-functions-dotnetcore-latest
 {
-	"name": "Azure Functions & Python 3",
+	"name": "Azure Functions & C# (.NET Core 2.2)",
 	"dockerFile": "Dockerfile",
-	"appPort": [ 7071 ],
-	"runArgs": [
-		// Uncomment the next line to use a non-root user. See https://aka.ms/vscode-remote/containers/non-root-user.
-		// "-u", "1000",
+	"appPort": 7071,
 
-		"-v","/var/run/docker.sock:/var/run/docker.sock"
-	],
+	// Use 'settings' to set *default* container specific settings.json values on container create. 
+	// You can edit these settings after create using File > Preferences > Settings > Remote.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
 
 	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "npm install",
+	// "postCreateCommand": "dotnet restore",
 
+	// Uncomment the next line to use a non-root user. On Linux, this will prevent
+	// new files getting created as root, but you may need to update the USER_UID
+	// and USER_GID in .devcontainer/Dockerfile to match your user if not 1000.
+	// "runArgs": [ "-u", "vscode" ],
+
+	// Add the IDs of extensions you want installed when the container is created in the array below.
 	"extensions": [
 		"ms-azuretools.vscode-azurefunctions",
-		"ms-azuretools.vscode-docker",
-		"ms-python.python"
-	],
-	"settings":  {
-		"remote.extensionKind": {
-			"ms-azuretools.vscode-docker": "workspace"
-		}
-	}
+		"ms-vscode.csharp"
+	]
 }
