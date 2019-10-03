@@ -1,0 +1,2 @@
+importlib_resources
+git+https://github.com/allanwright/media-classifier-core
