@@ -17,7 +17,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     if name:
         classifier = Classifier.load_default()
         label, estimate = classifier.predict(name)
-        return func.HttpResponse(f"Predicted {label} with {estimate * 100}% confidence.")
+        return func.HttpResponse(f"Predicted {label} with {(estimate * 100):.2f}% confidence.")
     else:
         return func.HttpResponse(
              "Please pass a name on the query string or in the request body",
