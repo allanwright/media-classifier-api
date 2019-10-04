@@ -1,4 +1,4 @@
-name: Linux_Python_Workflow
+name: azure functions
 
 on:
   push:
