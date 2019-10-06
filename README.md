@@ -7,4 +7,7 @@ Media-Classifier-Api is an azure functions app providing model prediction for [M
 Media-Classifier-Api is automatically deployed to azure functions when code is pushed to master.
 
 ## Usage
-Coming Soon.
+The api is deployed at [https://media-classifier-api.azurewebsites.net](https://media-classifier-api.azurewebsites.net) and at present is subject to constant breaking changes.  The following call is currently supported:
+
+* **GET api/classify** - Accepts a *name* query string parameter, eg:
+`https://media-classifier-api.azurewebsites.net/api/classify?name=Dark%20s01e01.mp4`
