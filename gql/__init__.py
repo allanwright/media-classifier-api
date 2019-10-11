@@ -2,7 +2,7 @@ import json
 import logging
 import azure.functions as func
 from graphene import Schema
-import gqllib.schema
+from .schema.Query import Query
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Executing GraphQL function.')
@@ -13,7 +13,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         pass
 
     if query:
-        schema = Schema(gqllib.schema.Query)
+        schema = Schema(Query)
         results = schema.execute(query)
 
         if results.errors:
