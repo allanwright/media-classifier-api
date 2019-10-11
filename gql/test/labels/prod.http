@@ -1,0 +1,9 @@
+POST https://media-classifier-api.azurewebsites.net/api/gql
+Content-Type: application/application/json
+
+query {
+    labels {
+        id
+        name
+    }
+}
