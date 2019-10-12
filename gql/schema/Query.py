@@ -1,11 +1,11 @@
 import graphene
 from mccore import prediction
-from .Label import Label
+from .Class import Class
 
 class Query(graphene.ObjectType):
-    labels = graphene.List(Label)
+    classes = graphene.List(Class)
 
     @staticmethod
-    def resolve_labels(parent, info):
+    def resolve_classes(parent, info):
         labels = prediction.get_labels()
         return [{ 'id': k, 'name': v } for (k, v) in labels.items()]

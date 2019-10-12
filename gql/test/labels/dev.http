@@ -2,7 +2,7 @@ POST http://localhost:7071/api/gql
 Content-Type: application/application/json
 
 query {
-    labels {
+    classes {
         id
         name
     }

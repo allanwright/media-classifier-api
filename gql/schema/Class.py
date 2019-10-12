@@ -1,6 +1,6 @@
 import graphene
 
-class Label(graphene.ObjectType):
+class Class(graphene.ObjectType):
     id = graphene.Int()
     name = graphene.String()
 
