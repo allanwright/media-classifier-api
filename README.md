@@ -11,3 +11,5 @@ The api is deployed at [https://media-classifier-api.azurewebsites.net](https://
 
 * **GET api/classify** - Accepts a *name* query string parameter, eg:
 `https://media-classifier-api.azurewebsites.net/api/classify?name=Dark%20s01e01.mp4`
+
+* **POST api/gql** - GraphQL endpoint details coming soon.
