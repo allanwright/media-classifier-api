@@ -6,7 +6,7 @@ query {
         id
         name
     }
-    media(name: "test.mp4") {
+    media(name: "name.ext") {
         name
         class {
             id

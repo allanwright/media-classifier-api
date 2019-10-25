@@ -20,9 +20,6 @@ class Query(graphene.ObjectType):
 
         return {
             'name': name,
-            'label': {
-                'id': 0, # TODO: Get class id
-                'name': label
-            },
+            'label': label,
             'confidence': confidence
         }
