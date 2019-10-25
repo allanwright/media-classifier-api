@@ -9,7 +9,4 @@ Media-Classifier-Api is automatically deployed to azure functions when code is p
 ## Usage
 The api is deployed at [https://media-classifier-api.azurewebsites.net](https://media-classifier-api.azurewebsites.net) and at present is subject to constant breaking changes.  The following call is currently supported:
 
-* **GET api/classify** - Accepts a *name* query string parameter, eg:
-`https://media-classifier-api.azurewebsites.net/api/classify?name=Dark%20s01e01.mp4`
-
 * **POST api/gql** - GraphQL endpoint details coming soon.
