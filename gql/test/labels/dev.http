@@ -12,6 +12,10 @@ query {
             id
             name
         }
-        confidence
+        confidence,
+        entities {
+            type
+            value
+        }
     }
 }
