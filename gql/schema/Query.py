@@ -16,15 +16,6 @@ class Query(graphene.ObjectType):
     
     @staticmethod
     def resolve_media(parent, info, name):
-        classifier = Classifier.load_default()
-        label, confidence = classifier.predict(name)
-        
-        recognizer = EntityRecognizer.load_default()
-        entities = [{ 'type': k, 'value': v } for (k, v) in recognizer.predict(name)]
-
-        return {
-            'name': name,
-            'label': label,
-            'confidence': confidence,
-            'entities': entities
-        }
+        media = Media()
+        media.name = name
+        return media

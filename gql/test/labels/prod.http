@@ -6,12 +6,18 @@ query {
         id
         name
     }
-    media(name: "file.ext") {
-        name,
-        class {
-            id
-            name
+    media(name: "name.ext") {
+        name
+        classification {
+            class {
+                id
+                name
+            }
+            confidence
         }
-        confidence
+        entities {
+            type
+            value
+        }
     }
 }

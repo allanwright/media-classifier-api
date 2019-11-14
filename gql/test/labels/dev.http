@@ -8,11 +8,13 @@ query {
     }
     media(name: "name.ext") {
         name
-        class {
-            id
-            name
+        classification {
+            class {
+                id
+                name
+            }
+            confidence
         }
-        confidence,
         entities {
             type
             value
