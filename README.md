@@ -15,10 +15,20 @@ type Class {
     name: String!
 }
 
+type Classification {
+    class: Class!,
+    confidence: float!
+}
+
+type Entity {
+    type: String!,
+    value: String!
+}
+
 type Media {
     name: String!,
-    label: Class!,
-    confidence: Float!
+    classification: Classification!,
+    entities: [Entity]
 }
 
 type Query {
