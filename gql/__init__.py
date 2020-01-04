@@ -5,7 +5,7 @@ from graphene import Schema
 from .helpers import responses
 from .schema.Query import Query
 
-def main(req: func.HttpRequest) -> func.HttpResponse:
+def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> func.HttpResponse:
     logging.info('Executing GraphQL function.')
 
     try:
@@ -16,7 +16,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     if query:
         schema = Schema(Query)
         results = schema.execute(query)
-        return responses.graphql(results)
+        response = responses.graphql(results)
+
+        # Write response to azure queue storage
+        if response.status_code == 200:
+            msg.set(response.get_body())
+
+        return response
     else:
         return responses.bad_request(
             'Please pass a GraphQL query in the request body.')
