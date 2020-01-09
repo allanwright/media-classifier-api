@@ -14,6 +14,12 @@ def graphql(results):
     else:
         return bad_request('Unexpected error processing GraphQL request.')
 
+def storage(query, response):
+    return json.dumps({
+        'query': query.replace('\n', ''),
+        'results': json.loads(response.get_body())
+    })
+
 def bad_request(message):
     return func.HttpResponse(
         body=json.dumps({
