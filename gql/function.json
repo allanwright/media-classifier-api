@@ -19,7 +19,7 @@
     {
       "type": "queue",
       "direction": "out",
-      "name": "pre",
+      "name": "msg",
       "queueName": "predictions",
       "connection": "AzureWebJobsStorage"
     }

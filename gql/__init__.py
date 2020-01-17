@@ -5,7 +5,7 @@ from graphene import Schema
 from .helpers import responses
 from .schema.Query import Query
 
-def main(req: func.HttpRequest, pre: func.Out[func.QueueMessage]) -> func.HttpResponse:
+def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> func.HttpResponse:
     logging.info('Executing GraphQL function.')
 
     try:
@@ -19,10 +19,9 @@ def main(req: func.HttpRequest, pre: func.Out[func.QueueMessage]) -> func.HttpRe
         response = responses.graphql(results)
 
         # Write response to azure queue storage
-        if response.status_code == 200:
-            storage = responses.storage(query, response)
-            if storage:
-                pre.set(storage)
+        message = responses.storage(query, response)
+        if message:
+            msg.set(message)
 
         return response
     else:
