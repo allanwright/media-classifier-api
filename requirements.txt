@@ -2,3 +2,4 @@ importlib_resources
 git+https://github.com/allanwright/media-classifier-core
 graphene
 spacy
+azure-storage-queue

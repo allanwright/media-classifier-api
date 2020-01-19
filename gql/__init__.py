@@ -1,12 +1,15 @@
 import json
 import logging
+import os
 import azure.functions as func
+from azure.storage.queue import QueueClient
 from graphene import Schema
 from .helpers import responses
 from .schema.Query import Query
 
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> func.HttpResponse:
+def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Executing GraphQL function.')
+    queue = QueueClient.from_connection_string(os.environ['AzureWebJobsStorage'], 'predictions')
 
     try:
         query = req.get_body().decode()
@@ -21,7 +24,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> func.HttpRe
         # Write response to azure queue storage
         message = responses.storage(query, response)
         if message:
-            msg.set(message)
+            queue.send_message(message, time_to_live=-1)
 
         return response
     else:
