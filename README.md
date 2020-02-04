@@ -7,7 +7,7 @@ Media-Classifier-Api is an azure functions app providing model prediction for [M
 Media-Classifier-Api is automatically deployed to azure functions when code is pushed to master.
 
 ## Usage
-The api is deployed to [https://media-classifier-api.azurewebsites.net](https://media-classifier-api.azurewebsites.net) and at present is subject to constant breaking changes.  At present, a single GraphQL endpoint exists at [api/gql](https://media-classifier-api.azurewebsites.net) and implements the following schema:
+The api is deployed to [https://media-classifier-api.azurewebsites.net](https://media-classifier-api.azurewebsites.net). At present, a single GraphQL endpoint exists at [api/gql](https://media-classifier-api.azurewebsites.net) and implements the following schema:
 
 ```graphql
 type Class {
