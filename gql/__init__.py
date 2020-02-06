@@ -22,7 +22,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         response = responses.graphql(results)
 
         # Write response to azure queue storage
-        message = responses.storage(query, response)
+        message = responses.storage(results)
         if message:
             queue.send_message(message, time_to_live=-1)
 
