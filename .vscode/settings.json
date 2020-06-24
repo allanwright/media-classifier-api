@@ -1,5 +1,4 @@
 {
-    "python.pythonPath": ".venv/bin/python3.6",
     "azureFunctions.deploySubpath": "media-classifier-api.zip",
     "azureFunctions.pythonVenv": ".venv",
     "azureFunctions.projectLanguage": "Python",
