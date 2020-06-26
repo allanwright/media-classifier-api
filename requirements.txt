@@ -1,5 +1,5 @@
 importlib_resources
-git+https://github.com/allanwright/media-classifier-core
+https://github.com/allanwright/media-classifier-core/archive/v1.0.7.tar.gz
 graphene
 spacy
 azure-storage-queue
