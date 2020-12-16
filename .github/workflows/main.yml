@@ -36,7 +36,7 @@ jobs:
     - name: 'Get models'
       shell: bash
       run: |
-        python get_models.py '${{ secrets.AZURE_MODEL_STORAGE_CNN }}'
+        python ./.github/workflows/get_models.py '${{ secrets.AZURE_MODEL_STORAGE_CNN }}'
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
       id: fa
