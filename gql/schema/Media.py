@@ -1,12 +1,23 @@
 import graphene
+
 from .Class import Class
 from .Classification import Classification
 from .Entity import Entity
+
 from mccore import Classifier
 from mccore import EntityRecognizer
+from mccore import ner
+from mccore import persistence
 
-classifier = Classifier.load_default()
-recognizer = EntityRecognizer.load_default()
+classifier = Classifier(
+    persistence.bin_to_obj('models/classifier_vec.pickle'),
+    persistence.bin_to_obj('models/classifier_mdl.pickle'),
+    persistence.json_to_obj('models/label_dictionary.json'))
+
+nlp, _ = ner.get_model()
+nlp_bytes = persistence.bin_to_obj('models/ner_mdl.pickle')
+nlp.from_bytes(nlp_bytes)
+recognizer = EntityRecognizer(nlp)
 
 class Media(graphene.ObjectType):
     name = graphene.String()
@@ -15,10 +26,10 @@ class Media(graphene.ObjectType):
 
     @staticmethod
     def resolve_classification(parent, info):        
-        label, confidence = classifier.predict(parent.name)
+        prediction = classifier.predict(parent.name)
         classification = Classification()
-        classification.label = label
-        classification.confidence = confidence
+        classification.label = prediction['label']
+        classification.confidence = prediction['probability']
         return classification
     
     @staticmethod
