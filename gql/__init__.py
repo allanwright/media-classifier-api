@@ -7,6 +7,20 @@ from graphene import Schema
 from .helpers import responses
 from .schema.Query import Query
 
+""" CACHE_MANANGER = CacheManager(ClassifierBuilder())
+def main(req: func.HttpRequest, mdl: bytes, vec: bytes, lbl: str) -> func.HttpResponse:
+    '''Gets the class of the specified filename.
+
+    '''
+    classifier = CACHE_MANANGER.get(vec, mdl, lbl)
+    name = req.route_params['filename']
+    prediction = classifier.predict(name)
+
+    return func.HttpResponse(
+        json.dumps(prediction),
+        status_code=200,
+        mimetype='application/json') """
+
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Executing GraphQL function.')
     queue = QueueClient.from_connection_string(os.environ['AzureWebJobsStorage'], 'predictions')
