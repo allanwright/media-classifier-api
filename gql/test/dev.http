@@ -2,14 +2,14 @@ POST http://localhost:7071/api/gql
 Content-Type: application/application/json
 
 query {
-    classes {
+    labels {
         id
         name
     }
     media(name: "name.ext") {
         name
         classification {
-            class {
+            label {
                 id
                 name
             }

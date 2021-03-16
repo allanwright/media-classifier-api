@@ -1,6 +1,6 @@
-from .Class import Class
+from .Label import Label
 import graphene
 
 class Classification(graphene.ObjectType):
-    label = graphene.Field(Class, name='class')
+    label = graphene.Field(Label, name='label')
     confidence = graphene.Float()
