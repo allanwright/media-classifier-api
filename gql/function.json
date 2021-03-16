@@ -1,0 +1,48 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+        "type": "blob",
+        "direction": "in",
+        "name": "cmdl",
+        "dataType": "binary",
+        "path": "models/classifier_mdl.pickle"
+    },
+    {
+        "type": "blob",
+        "direction": "in",
+        "name": "cvec",
+        "dataType": "binary",
+        "path": "models/classifier_vec.pickle"
+    },
+    {
+        "type": "blob",
+        "direction": "in",
+        "name": "clbl",
+        "dataType": "string",
+        "path": "models/label_dictionary.json"
+    },
+    {
+        "type": "blob",
+        "direction": "in",
+        "name": "nmdl",
+        "dataType": "binary",
+        "path": "models/ner_mdl.pickle"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
