@@ -40,6 +40,13 @@
         "path": "models/ner_mdl.pickle"
     },
     {
+        "type": "blob",
+        "direction": "in",
+        "name": "guid",
+        "dataType": "string",
+        "path": "models/.guid"
+    },
+    {
       "type": "http",
       "direction": "out",
       "name": "$return"

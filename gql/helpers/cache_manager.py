@@ -15,37 +15,22 @@ class CacheManager:
         Args:
             builder: The cache object builder.
         '''
-        self.input = []
+        self.guid = ''
         self.builder = builder
         self.cache = None
 
-    def get(self, *args):
+    def get(self, guid: str, *args):
         '''Gets a cached object or transforms one from the given input.
 
-        The input args are first validated against a set a of cached input/s.
-        If the input has changed, the input is transformed into output then returned.
-        If the input has not changed, the cached object is returned.
+        The guid is validated against a cached guid.
+        If the guid has changed, the cache is assummed to be invalid and a new cache built.
+        If the guid has not changed, the existing cache returned.
         '''
-        if self.cache is None or self.__invalidate(args):
+        if self.cache is None or self.__invalidate(guid):
             logging.info('Cache not found or invalidated.')
-            self.input = args
+            self.guid = guid
             self.cache = self.builder.build(*args)
         return self.cache
 
-    def __invalidate(self, args):
-        if len(self.input) != len(args):
-            return True
-
-        def is_equal(x, y):
-            if type(x) is not type(y):
-                return False
-            elif isinstance(x, str):
-                return x == y
-            else:
-                return x is y
-
-        for i in range(len(self.input)):
-            if not is_equal(self.input[i], args[i]):
-                return True
-
-        return False
+    def __invalidate(self, guid):
+        return self.guid != guid

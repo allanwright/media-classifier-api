@@ -14,7 +14,7 @@ import gql.helpers.responses as responses
 
 CACHE_MANAGER = CacheManager(ContextBuilder())
 
-def main(req: func.HttpRequest, cmdl: bytes, cvec: bytes, clbl: str, nmdl: bytes) -> func.HttpResponse:
+def main(req: func.HttpRequest, cmdl: bytes, cvec: bytes, clbl: str, nmdl: bytes, guid: str) -> func.HttpResponse:
     logging.info('Executing GraphQL function.')
 
     queue = QueueClient.from_connection_string(os.environ['AzureWebJobsStorage'], 'predictions')
@@ -26,7 +26,7 @@ def main(req: func.HttpRequest, cmdl: bytes, cvec: bytes, clbl: str, nmdl: bytes
 
     if query:
         schema = Schema(Query)
-        context = CACHE_MANAGER.get(cmdl, cvec, clbl, nmdl)
+        context = CACHE_MANAGER.get(guid, cmdl, cvec, clbl, nmdl)
         results = schema.execute(query, context=context)
         response = responses.graphql(results)
 
