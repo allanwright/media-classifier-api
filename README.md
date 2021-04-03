@@ -10,13 +10,13 @@ Media-Classifier-Api is automatically deployed to azure functions when code is p
 The api is deployed to [https://media-classifier-api.azurewebsites.net](https://media-classifier-api.azurewebsites.net). At present, a single GraphQL endpoint exists at [api/gql](https://media-classifier-api.azurewebsites.net) and implements the following schema:
 
 ```graphql
-type Class {
+type Label {
     id: Int!,
     name: String!
 }
 
 type Classification {
-    class: Class!,
+    label: Label!,
     confidence: float!
 }
 
@@ -32,7 +32,7 @@ type Media {
 }
 
 type Query {
-    classes: [Class]
+    labels: [Label]
     media(name: String!): Media
 }
 ```
